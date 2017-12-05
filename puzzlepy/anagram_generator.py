@@ -3,12 +3,20 @@ class anagram_generator:
 'random' module:
 
     Args:
-            word    (string)    :    word to re-arrange
+            word_list    (list of strings)    :    words to re-arrange
     '''
     def __init__(self, word_list):
         self._words = word_list
+        self._result = []
         for word in self._words:
-            print self._scramble(word)
+            self._result.append(self._scramble(word))
+
+    def __str__(self):
+        out_str = ''
+        for word in self._result:
+            out_str += word
+            out_str += '\n'
+        return out_str
 
     def _scramble(self, word):
         from random import shuffle

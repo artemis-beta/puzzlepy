@@ -65,7 +65,7 @@ class wordsearch:
                 try:
                     _dir_1 = randint(0,2)-1
                     _dir_2 = randint(0,2)-1
-                    self._place_in_direction(word, (_x,_y), (_dir_1,_dir_2)) 
+                    self._place_in_direction(word.replace(' ',''), (_x,_y), (_dir_1,_dir_2)) 
                 except:
                     continue
                 self._words.remove(word)
@@ -79,10 +79,16 @@ class wordsearch:
                     self._grid[y][x] = choice(ascii_uppercase)
 
 
-    def __str__(self):
+    def __repr__(self):
         return self._grid.__str__()
 
-
+    def __str__(self):
+        out_str = ''
+        for y in range(self._grid.shape[0]):
+            for x in range(self._grid.shape[1]):
+                out_str += self._grid[y][x]
+            out_str += '\n'
+        return out_str
 
 if __name__ in "__main__":
     x = wordsearch(['apple','pear','pineapple','lemon','melon'])
